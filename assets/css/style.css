@@ -1,4 +1,25 @@
+body{
+  color: darkslateblue;
+  height: 100vh;
+}
+
+#weather-card{
+  opacity: 0.8;
+  background-color: grey;
+}
+
+#quote-card{
+  opacity: 0.7;
+  background-color: black;
+}
+
 #todo-error{
   color: red;
   font-size: 2em;
+}
+
+#bg-image{
+  background-image: url("../images/victorian.jpg");
+  background-size: cover;
+  background-attachment: fixed;
 }

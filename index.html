@@ -5,25 +5,47 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
 	<title>Inspire</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body id="bg-image">
-	<div id="weather">
-		Your Weather Template
+	<div class="container-fluid">
+		<div class="row">
+			<div class="offset-10 col-2">
+				<div id="weather">
+					Your Weather Template
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col text-center" style="margin-top: 25vh; margin-bottom: 20vh;">
+				A big old clock
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 text-center">
+				<div id="quote">
+					The Quote
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 mt-3">
+				<div id="todo-list">
+					A Todo List
+					<div id="todo-error"></div>
+					<div id="todos"></div>
+					<form onsubmit="">Form is here.</form>
+				</div>
+			</div>
+		</div>
 	</div>
 
-	<div id="quote">
-		The Quote
-	</div>
-
-	<div>
-		A Todo List
-		<div id="todo-error"></div>
-		<form onsubmit=""></form>
-		<div id="todos"></div>
-	</div>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 	<script type="module" src="app/main.js"></script>
