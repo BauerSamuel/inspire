@@ -39,8 +39,11 @@
 				<div id="todo-list">
 					A Todo List
 					<div id="todo-error"></div>
-					<div id="todos"></div>
-					<form onsubmit="">Form is here.</form>
+					<ul>
+						<div id="todos">
+						</div>
+					</ul>
+					<form onsubmit="app.controllers.todoController.addTodo(event)">Form is here.</form>
 				</div>
 			</div>
 		</div>
