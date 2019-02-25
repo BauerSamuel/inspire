@@ -1,8 +1,8 @@
-import Todo from "../../models/todo";
+import Todo from "../../models/todo.js";
 
 // @ts-ignore
 const _todoApi = axios.create({
-	baseURL: 'https://bcw-sandbox.herokuapp.com/api/jake/todos/',
+	baseURL: 'https://bcw-sandbox.herokuapp.com/api/samuel/todos/',
 	timeout: 3000
 });
 
@@ -21,6 +21,10 @@ function _setState(prop, data) {
 }
 
 export default class TodoService {
+	get TodoList() {
+		return _state.todos
+	}
+
 	get TodoError() {
 		return _state.error
 	}
@@ -30,10 +34,11 @@ export default class TodoService {
 	}
 
 	getTodos() {
-		console.log("Getting the Todo List")
 		_todoApi.get()
 			.then(res => {
-				_setState('todos', new Todo(res.data))
+				let data = res.data.data.map(t => new Todo(t))
+				console.log(data[0].completed)
+				_setState('todos', data)
 			})
 			.catch(err => _setState('error', err.response.data))
 	}
@@ -41,20 +46,19 @@ export default class TodoService {
 	addTodo(todo) {
 		_todoApi.post('', todo)
 			.then(res => {
-				_setState('todos', new Todo(res.data))
+				this.getTodos();
 			})
 			.catch(err => _setState('error', err.response.data))
 	}
 
 	toggleTodoStatus(todoId) {
 		let todo = _state.todos.find(todo => todo._id == todoId)
-		//put
-		// Be sure to change the completed property to its opposite
-		// todo.completed = !todo.completed <-- THIS FLIPS A BOOL
-
-		_todoApi.put(todoId, todo)
+		let value = todo.completed;
+		todo = new Todo(todo)
+		todo.completed = !value;
+		console.log('todoId is ' + todo._id + ' todo is ' + todo.completed)
+		_todoApi.put('/' + todo._id, todo)
 			.then(res => {
-				//DO YOU WANT TO DO ANYTHING WITH THIS?
 				this.getTodos()
 			})
 			.catch(err => _setState('error', err.response.data))

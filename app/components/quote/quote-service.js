@@ -29,7 +29,6 @@ export default class QuoteService {
 	}
 
 	getQuotes() {
-		console.log('Getting quotes from the master quoter.')
 		_quoteApi.get()
 			.then(res => {
 				setState('quotes', new Quote(res.data))

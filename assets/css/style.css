@@ -19,7 +19,6 @@ body{
 }
 
 #bg-image{
-  background-image: url("../images/victorian.jpg");
   background-size: cover;
   background-attachment: fixed;
 }

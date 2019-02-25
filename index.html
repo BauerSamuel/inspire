@@ -37,18 +37,20 @@
 		<div class="row">
 			<div class="col-12 mt-3">
 				<div id="todo-list">
-					A Todo List
+					A Todo List <span id="todoNumber"> </span>
 					<div id="todo-error"></div>
 					<ul>
 						<div id="todos">
 						</div>
 					</ul>
-					<form onsubmit="app.controllers.todoController.addTodo(event)">Form is here.</form>
+					<form onsubmit="app.controllers.todoController.addTodo(event)">
+						<input type="text" name="description" placeholder="What's to do today?" required>
+						<button type="submit">Submit</button>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 	<script type="module" src="app/main.js"></script>

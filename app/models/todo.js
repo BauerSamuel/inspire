@@ -1,10 +1,12 @@
 export default class Todo {
   constructor(data) {
-    console.log(data)
+    this._id = data._id
+    this.description = data.description
+    this.completed = false;
   }
   getTodos() {
     return `
-      <li>{this.todo}</li>
+      <li onclick="app.controllers.todoController.toggleTodoStatus('${this._id}')">${this.description}</li>
     `
   }
 
