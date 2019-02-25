@@ -1,7 +1,7 @@
 import Todo from "../../models/todo.js";
 
 // @ts-ignore
-const _todoApi = axios.create({
+let _todoApi = axios.create({
 	baseURL: 'https://bcw-sandbox.herokuapp.com/api/samuel/todos/',
 	timeout: 3000
 });
@@ -37,7 +37,6 @@ export default class TodoService {
 		_todoApi.get()
 			.then(res => {
 				let data = res.data.data.map(t => new Todo(t))
-				console.log(data[0].completed)
 				_setState('todos', data)
 			})
 			.catch(err => _setState('error', err.response.data))
@@ -53,11 +52,8 @@ export default class TodoService {
 
 	toggleTodoStatus(todoId) {
 		let todo = _state.todos.find(todo => todo._id == todoId)
-		let value = todo.completed;
-		todo = new Todo(todo)
-		todo.completed = !value;
-		console.log('todoId is ' + todo._id + ' todo is ' + todo.completed)
-		_todoApi.put('/' + todo._id, todo) //This isnt working and I'm really angry about it.
+		todo.completed = !todo.completed
+		_todoApi.put(`/${todoId}`, todo)
 			.then(res => {
 				this.getTodos()
 			})
@@ -65,9 +61,10 @@ export default class TodoService {
 	}
 
 	removeTodo(todoId) {
-		_todoApi.delete(todoId)
+		let todo = _state.todos.find(t => t._id == todoId)
+		console.log(todo)
+		_todoApi.delete(`/${todoId}`, todo)
 			.then(res => {
-				console.log(res.data)
 				this.getTodos()
 			})
 			.catch(err => {

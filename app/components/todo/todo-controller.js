@@ -4,44 +4,40 @@ const _todoService = new TodoService()
 
 function _drawTodos() {
 	let template = '';
-	let numLeft = 0;
 	let list = _todoService.TodoList
 	list.forEach(t => {
-		console.log("t.completed for this element is " + t.completed)
 		if (t.completed == true) {
-			template += `<li onclick="app.controllers.todoController.toggleTodoStatus('${t._id}')"><s>${t.description}</s></li>`
-			console.log("template is now " + template)
-			numLeft--;
+			template += t.getTodos()
 		}
 		else {
 			template += t.getTodos()
-			numLeft++;
 		}
 	})
 
-	console.log(template)
 	document.querySelector('#todos').innerHTML = template;
 
-	if (numLeft > 1) {
-		document.querySelector('#todoNumber').innerHTML = `${numLeft} things left, get working!`;
+	let array = _todoService.TodoList.filter(t => t.completed == false);
+	let length = array.length
+	if (length > 1) {
+		document.querySelector('#todoNumber').innerHTML = `${length} things left, get working!(double-click to delete)`;
 	}
-	else if (numLeft == 1) {
-		document.querySelector('#todoNumber').innerHTML = `Only ${numLeft} thing left! Almost done!`;
+	else if (length == 1) {
+		document.querySelector('#todoNumber').innerHTML = `Only ${length} thing left! Almost done!(double-click to delete)`;
 	}
 	else {
-		document.querySelector('#todoNumber').innerHTML = `You did it! All your tasks are done today!`;
+		document.querySelector('#todoNumber').innerHTML = `You did it! All your tasks are done today!(double-click to delete)`;
 	}
 }
 
-function _drawError() {
-	document.querySelector('#todo-error').textContent = `${_todoService.TodoError.message}`
-}
+// function _drawError() {
+// 	document.querySelector('#todo-error').textContent = `${_todoService.TodoError.message}`
+// }
 
 
 export default class TodoController {
 	constructor() {
 		_todoService.addSubscriber('todos', _drawTodos)
-		_todoService.addSubscriber('error', _drawError)
+		// _todoService.addSubscriber('error', _drawError)
 		_todoService.getTodos()
 	}
 
@@ -57,10 +53,6 @@ export default class TodoController {
 	}
 
 	toggleTodoStatus(todoId) {
-		// asks the service to edit the todo status
-		// Use put to do this I think
-
-
 		_todoService.toggleTodoStatus(todoId)
 	}
 
