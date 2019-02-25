@@ -19,13 +19,13 @@ function _drawTodos() {
 	let array = _todoService.TodoList.filter(t => t.completed == false);
 	let length = array.length
 	if (length > 1) {
-		document.querySelector('#todoNumber').innerHTML = `${length} things left, get working!(double-click to delete)`;
+		document.querySelector('#todoNumber').innerHTML = `${length} things left, get working!(Single-click to complete, double-click to delete)`;
 	}
 	else if (length == 1) {
-		document.querySelector('#todoNumber').innerHTML = `Only ${length} thing left! Almost done!(double-click to delete)`;
+		document.querySelector('#todoNumber').innerHTML = `Only ${length} thing left! Almost done!(Single-click to complete, double-click to delete)`;
 	}
 	else {
-		document.querySelector('#todoNumber').innerHTML = `You did it! All your tasks are done today!(double-click to delete)`;
+		document.querySelector('#todoNumber').innerHTML = `You did it! All your tasks are done today!(Single-click to complete, double-click to delete)`;
 	}
 }
 

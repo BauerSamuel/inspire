@@ -3,6 +3,10 @@ body{
   height: 100vh;
 }
 
+.hover-stuff:hover{
+  cursor: pointer;
+}
+
 #clock-text{
   color: white;
   text-shadow: 2px 2px black;

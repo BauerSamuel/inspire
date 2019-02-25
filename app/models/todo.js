@@ -7,11 +7,11 @@ export default class Todo {
   getTodos() {
     if (this.completed == false) {
       return `
-      <li on ondblclick="app.controllers.todoController.removeTodo('${this._id}')" onclick="app.controllers.todoController.toggleTodoStatus('${this._id}')">${this.description}</li>
+      <li class="hover-stuff" ondblclick="app.controllers.todoController.removeTodo('${this._id}')" onclick="app.controllers.todoController.toggleTodoStatus('${this._id}')">${this.description}</li>
       `
     } else {
       return `
-      <li class="text-muted" ondblclick="app.controllers.todoController.removeTodo('${this._id}')" onclick="app.controllers.todoController.toggleTodoStatus('${this._id}')"><del>${this.description}</del>(completed)</li>
+      <li class="hover-stuff text-muted" ondblclick="app.controllers.todoController.removeTodo('${this._id}')" onclick="app.controllers.todoController.toggleTodoStatus('${this._id}')"><del>${this.description}</del>(completed)</li>
       `
     }
   }
