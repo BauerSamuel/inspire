@@ -3,9 +3,19 @@ body{
   height: 100vh;
 }
 
+#clock-text{
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
 #weather-card{
   opacity: 0.8;
-  background-color: grey;
+  background-color: black;
+}
+
+#todo-card{
+  opacity: 0.8;
+  background-color: black;
 }
 
 #quote-card{

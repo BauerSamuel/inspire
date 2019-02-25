@@ -57,7 +57,7 @@ export default class TodoService {
 		todo = new Todo(todo)
 		todo.completed = !value;
 		console.log('todoId is ' + todo._id + ' todo is ' + todo.completed)
-		_todoApi.put('/' + todo._id, todo)
+		_todoApi.put('/' + todo._id, todo) //This isnt working and I'm really angry about it.
 			.then(res => {
 				this.getTodos()
 			})
@@ -65,8 +65,6 @@ export default class TodoService {
 	}
 
 	removeTodo(todoId) {
-		// This one is on you to write.... 
-		// The http method is delete at the todoId
 		_todoApi.delete(todoId)
 			.then(res => {
 				console.log(res.data)

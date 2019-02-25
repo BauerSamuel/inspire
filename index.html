@@ -16,33 +16,40 @@
 <body id="bg-image">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="offset-10 col-2">
+			<div class="col-8 text-center">
+				<div id="quote">
+					The Quote
+				</div>
+			</div>
+			<div class="offset-2 col-2">
 				<div id="weather">
 					Your Weather Template
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col text-center" style="margin-top: 25vh; margin-bottom: 20vh;">
-				A big old clock
+			<div class="col text-center" style="margin-top: 10vh; margin-bottom: 10vh;">
+				<h2 id="clock-text"> Current time is: 5:08pm</h2>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-12 text-center">
-				<div id="quote">
-					The Quote
-				</div>
-			</div>
+		<div class="row text-center">
 		</div>
 		<div class="row">
-			<div class="col-12 mt-3">
-				<div id="todo-list">
-					A Todo List <span id="todoNumber"> </span>
-					<div id="todo-error"></div>
-					<ul>
-						<div id="todos">
+			<div class="col-5 mt-3" style="height: 45vh; overflow-y:scroll;">
+				<div id="todo-card" class="card border-info mb-1">
+					<div id="todo-list">
+						<h4>To-do List</h4>
+						<span id="todoNumber"> </span>
+						<div id="todo-error"></div>
+						<div class="card-header pb-0">
 						</div>
-					</ul>
+						<div class="card-body text-info">
+							<ul>
+								<div id="todos">
+								</div>
+							</ul>
+						</div>
+					</div>
 					<form onsubmit="app.controllers.todoController.addTodo(event)">
 						<input type="text" name="description" placeholder="What's to do today?" required>
 						<button type="submit">Submit</button>

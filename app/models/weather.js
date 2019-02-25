@@ -7,7 +7,7 @@ export default class Weather {
 
   getWeather() {
     return `
-    <div id="weather-card" class="card border-info mb-1" style="max-width: 10cw;">
+    <div id="weather-card" class="card border-info mb-1" style="max-width: 10vw;">
       <div class="card-header pb-0"><h6>${this.city}</h6></div>
       <div class="card-body text-info">
       <h3 class="card-title">${this.far}°F</h3>
